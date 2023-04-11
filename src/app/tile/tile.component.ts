@@ -104,9 +104,9 @@ export class TileComponent {
     if(this.userID == ''){
       this.userID = getCookie('userid');
     }
-    if(this.userID == ''){
+    // if(this.userID == ''){
       this.userID = 'tstworknet1';
-    }
+    // }
     this.userEmail = this.userID+"@mailinator.com";
     //let userGroups: any = await getRequest("/pulsecontent/api/contents/pznfields/"+ this.userID +"?honorPzn=ADDRESS_COUNTRY", null);
     // console.log(JSON.stringify(userGroups));
