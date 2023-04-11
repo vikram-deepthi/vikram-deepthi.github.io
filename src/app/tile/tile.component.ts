@@ -104,7 +104,7 @@ export class TileComponent {
       this.userID = getCookie('userid');
     }
     this.userEmail = this.userID+"@mailinator.com";
-    let userGroups: any = await getRequest("/pulsecontent/api/contents/pznfields/"+ this.userID +"?honorPzn=ADDRESS_COUNTRY", null);
+    //let userGroups: any = await getRequest("/pulsecontent/api/contents/pznfields/"+ this.userID +"?honorPzn=ADDRESS_COUNTRY", null);
     // console.log(JSON.stringify(userGroups));
 
 
@@ -138,9 +138,9 @@ export class TileComponent {
     if('' != this.selectedGroup){
       gps.push(this.selectedGroup);
     } else {
-      for(let key in userGroups) {
-        gps.push(userGroups[key].toLowerCase());
-      }
+      // for(let key in userGroups) {
+      //   gps.push(userGroups[key].toLowerCase());
+      // }
     }
     this.getNewsContent(collectionNames, gps);
     // console.log(gps);
@@ -157,14 +157,16 @@ export class TileComponent {
 
   private getNewsContent(collectionNames: any, userGroups: any): void {
     console.log(userGroups);
-    if(userGroups.includes("usa_manager_associates")){
-      userGroups = ['all_users,usa_associates,usa_manager_associates'];
-    } else if(userGroups.includes("usa_associates")){
-      userGroups = ['all_users,usa_associates'];
-    } else if(userGroups.includes("ind_manager_associates")){
-      userGroups = ['all_users,ind_associates,ind_manager_associates'];
-    } else if(userGroups.includes("ind_associates")){
-      userGroups = ['all_users,ind_associates'];
+    if(userGroups.length == 0){
+      if(this.userID == 'tstworknet2'){
+        userGroups = ['all_users,usa_associates,usa_manager_associates'];
+      } else if(this.userID == 'tstworknet1' || this.userID == 'tstworknet3'){
+        userGroups = ['all_users,usa_associates'];
+      } else if(this.userID == 'tstlegato5'){
+        userGroups = ['all_users,ind_associates,ind_manager_associates'];
+      } else if(this.userID == 'tstlegato3' || this.userID == 'tstlegato4'){
+        userGroups = ['all_users,ind_associates'];
+      }
     }
     this.zipAndExecute([
       from(this.deliveryClient.items()
