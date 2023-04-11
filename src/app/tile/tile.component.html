@@ -1,0 +1,53 @@
+<section class="rh09 rh09v3 rw-neutral-10bg rw-pattern9 rw-pattern-50p rw-pattern-small rw-pattern-load"
+  data-trackas="rh09" data-ocomid="rh09" data-a11y="true">
+  <div class="rh09w1 cwidth">
+    <h2>Hello {{ displayName }},
+    </h2>
+    <div *ngIf="showUserPicker" >
+      <select (change)="changeRole($event)">
+        <option *ngFor="let role of roles" value="{{role.codename}}">{{role.name}}</option> 
+      </select>
+    </div>
+    <!--div *ngIf="!showUserName" style="height: 350px;">
+      <h4>Please enter USER ID to continue: </h4>
+      <span><input type="text" (change)="bindUserID($event)" style="width:500px;" placeholder="Enter AL41490 to get default value"/></span>
+      <span><input type="button" (click)="getUser($event)" value="Login"/></span>
+    </div-->
+    
+    <h4 *ngIf="showUserName">
+    </h4>
+    <div class="rh09tiles col-framework col-justified col-gutters col3 container">
+      <div class="col-w1 row">
+        <div class="col-item rh09tile rw-neutral-00bg rw-theme-accent-beforebg col" *ngFor="let carouselItem of carouselData">
+          <div class="rh09-body">
+            <div class="rh09-ttl" style="height: 84px;">
+              <h4 role="heading" aria-level="3">{{ carouselItem.title }}
+              </h4>
+            </div>
+            <div class="rh09-copy" style="height: 96px;">
+              <p innerHTML="{{ carouselItem.desc }}"></p>
+            </div>
+            <div class="rh09-img">
+              <img class=""
+                data-src="{{ carouselItem.image }}"
+                alt="Saudi Arabia cloud region"
+                style="width: 100%">
+            </div>
+          </div>
+          <div style="height: 25px;">
+            <span>
+              {{ carouselItem.date }}
+            </span>
+          </div>
+          <div class="rh09-cta">
+            <a targer="_blank" href="{{ carouselItem.link }}" rel="noreferrer">Read more
+              <span class="sr-only">
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="showUserName" class="rh09-cta" style="float: right;"><a targer="_blank" href="/allnews">See All News</a></div>
+  </div>
+</section>

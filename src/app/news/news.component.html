@@ -1,0 +1,34 @@
+<section class="rh09 rh09v3 rw-neutral-10bg rw-pattern9 rw-pattern-50p rw-pattern-small rw-pattern-load"
+  data-trackas="rh09" data-ocomid="rh09" data-a11y="true">
+  <div class="rh09w1 cwidth">
+    <div class="rh09tiles col-framework col-justified col-gutters col3">
+      <div class="">
+        <div class="rh09tile rw-neutral-00bg rw-theme-accent-beforebg">
+          <div class="rh09-body">
+            <div class="rh09-ttl" style="height: 84px;">
+              <h4 role="heading" aria-level="3">{{ newsData.title }}
+              </h4>
+              <h6 aria-level="3">{{ newsData.date }}
+              </h6>
+            </div>
+            <div class="rh09-img">
+              <img class="" data-src="{{ newsData.image }}" alt="Saudi Arabia cloud region">
+            </div>
+            <div class="rh09-copy">
+              <p innerHTML="{{ newsData.desc }}">
+              </p>
+            </div>
+            <div style="height: 25px;">
+              <span>
+                Likes {{ likes }}
+              </span>&nbsp;&nbsp;&nbsp;&nbsp;
+              <span>
+                Comments {{ comments }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
