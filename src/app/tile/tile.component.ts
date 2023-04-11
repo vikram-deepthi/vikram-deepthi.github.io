@@ -100,8 +100,12 @@ export class TileComponent {
     // } else {
     //   this.userEmail = 'deepthivikram90@gmail.com';
     // }
+    console.log(document.cookie);
     if(this.userID == ''){
       this.userID = getCookie('userid');
+    }
+    if(this.userID == ''){
+      this.userID = 'tstworknet1';
     }
     this.userEmail = this.userID+"@mailinator.com";
     //let userGroups: any = await getRequest("/pulsecontent/api/contents/pznfields/"+ this.userID +"?honorPzn=ADDRESS_COUNTRY", null);
