@@ -10,9 +10,9 @@ import { observableHelper } from '../helpers/observable.helper';
 import { getRequest, 
   getKontentProjectRequest, 
   getKontentSubscriptionRequest,
-  projectId, previewAPIKey,
   getFullDate, getCookie
 } from '../helpers/http.helpers';
+import { previewAPIKey, projectId } from '../helpers/constants';
 import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-myhr',

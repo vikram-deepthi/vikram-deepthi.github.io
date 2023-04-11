@@ -9,7 +9,8 @@ import {
 } from '@kentico/kontent-delivery';
 import { Observable, from } from 'rxjs';
 import { observableHelper } from '../helpers/observable.helper';
-import { previewAPIKey, getFullDate, projectId } from '../helpers/http.helpers';
+import { getFullDate } from '../helpers/http.helpers';
+import { previewAPIKey, projectId } from '../helpers/constants';
 import { map } from 'rxjs/operators';
 
 @Component({

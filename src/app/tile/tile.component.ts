@@ -11,9 +11,9 @@ import { observableHelper } from '../helpers/observable.helper';
 import { getRequest, 
   getKontentProjectRequest, 
   getKontentSubscriptionRequest,
-  projectId, previewAPIKey,
   getDate,getCookie
 } from '../helpers/http.helpers';
+import { previewAPIKey, projectId, langCodeName } from '../helpers/constants';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -25,6 +25,10 @@ export class TileComponent {
   selectedGroup: string = '';
   roles: any = [];
   title = '';
+  projectId = projectId;
+  bottom = 'bottom';
+  after = 'after';
+  langCodeName = langCodeName;
   carouselData: any = [];
   displayName: string = "";
   isManager: boolean = false;
@@ -183,7 +187,7 @@ export class TileComponent {
         map((response: any) => {
           this.itemsResponse = response;
           this.carouselData = [];
-          // console.log('this.itemsResponse = '+ JSON.stringify(this.itemsResponse));
+          console.log('this.itemsResponse = '+ JSON.stringify(this.itemsResponse));
           response.data.items.forEach(async (element: any) => {
             // let newsCarouselItem:any = await this.getLikesAndComments(element.system.name);
             let newsCarouselItem:any = {};
@@ -191,6 +195,9 @@ export class TileComponent {
             newsCarouselItem['desc'] = element.elements.article_details__description.value;
             newsCarouselItem['image'] = element.elements.web_page_content__image.value[0].url;
             newsCarouselItem['link'] = '/news/'+element.system.codename.toUpperCase();
+            
+            newsCarouselItem['id'] = (element.system.id);
+            newsCarouselItem['name'] = (element.system.codename);
             newsCarouselItem['date'] = getDate(element.system.lastModified);
             this.carouselData.push(newsCarouselItem);
           });
